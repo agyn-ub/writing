@@ -6,6 +6,7 @@ import { users } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { JWT } from 'next-auth/jwt';
 import { pool } from '@/db/pool';
+import { handleUserSession } from '@/app/api/auth/session-handler';
 
 export interface CustomSession extends Session {
   user: {
@@ -47,51 +48,22 @@ const authOptions: AuthOptions = {
       });
       
       try {
-        const client = await pool.connect();
-        
-        try {
-          const existingUserResult = await client.query(`
-            SELECT id, email FROM users WHERE email = $1
-          `, [user.email]);
-          
-          if (existingUserResult.rows.length > 0) {
-            const existingUser = existingUserResult.rows[0];
-            
-            if (existingUser.id !== user.id) {
-              console.log(`Updating user ID from ${existingUser.id} to ${user.id} for email ${user.email}`);
-              
-              await client.query('BEGIN');
-              
-              await client.query(`
-                ALTER TABLE essays DISABLE TRIGGER ALL;
-              `);
-              
-              await client.query(`
-                UPDATE essays SET user_id = $1 WHERE user_id = $2
-              `, [user.id, existingUser.id]);
-              
-              await client.query(`
-                ALTER TABLE essays ENABLE TRIGGER ALL;
-              `);
-              
-              await client.query(`
-                UPDATE users SET id = $1 WHERE id = $2
-              `, [user.id, existingUser.id]);
-              
-              await client.query('COMMIT');
-              console.log(`User ID updated successfully`);
-            }
-          }
-          
-          return true;
-        } catch (error) {
-          console.error('Error handling user sign in:', error);
+        // Use handleUserSession to ensure the user exists in the database
+        // This will create the user if they don't exist, or update if needed
+        const verifiedUser = await handleUserSession(user);
+        if (!verifiedUser) {
+          console.error('Failed to verify/create user during sign in');
           return false;
-        } finally {
-          client.release();
         }
+        
+        console.log('User successfully verified/created in database:', {
+          id: verifiedUser.id,
+          email: verifiedUser.email
+        });
+        
+        return true;
       } catch (error) {
-        console.error('Database connection error during sign in:', error);
+        console.error('Error during sign in user verification:', error);
         return false;
       }
     },
