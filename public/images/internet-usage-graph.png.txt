@@ -1,0 +1,33 @@
+Line Graph: Internet Usage Trends (2000-2020)
+
+The graph shows the percentage of households with internet access in four countries over a 20-year period:
+
+South Korea:
+- 2000: 49%
+- 2005: 92%
+- 2010: 97%
+- 2015: 99%
+- 2020: 99.5%
+
+United Kingdom:
+- 2000: 25%
+- 2005: 60%
+- 2010: 73%
+- 2015: 85%
+- 2020: 96%
+
+United States:
+- 2000: 42%
+- 2005: 65%
+- 2010: 71%
+- 2015: 80%
+- 2020: 90%
+
+Brazil:
+- 2000: 5%
+- 2005: 13%
+- 2010: 27%
+- 2015: 51%
+- 2020: 74%
+
+South Korea experienced the most rapid growth early on, reaching near-universal access by 2010. The UK and US show steady growth throughout the period. Brazil started with the lowest percentage but shows accelerating growth, especially after 2010. 

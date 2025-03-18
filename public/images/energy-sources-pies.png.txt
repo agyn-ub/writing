@@ -1,0 +1,24 @@
+Pie Charts: Energy Sources in the USA (1980 vs 2020)
+
+1980 Energy Sources:
+- Oil: 42%
+- Coal: 23%
+- Natural Gas: 19%
+- Nuclear: 8%
+- Renewable: 8%
+
+2020 Energy Sources:
+- Oil: 35%
+- Natural Gas: 34%
+- Coal: 10%
+- Renewable: 12%
+- Nuclear: 9%
+
+Key changes from 1980 to 2020:
+1. Oil remains the largest source but decreased from 42% to 35%
+2. Natural gas significantly increased from 19% to 34%, becoming almost equal to oil
+3. Coal dramatically decreased from 23% to 10%
+4. Renewable energy increased from 8% to 12%
+5. Nuclear energy remained relatively stable, with a slight increase from 8% to 9%
+
+The charts show a clear shift away from coal toward natural gas, with modest growth in renewable energy sources. 

@@ -1,0 +1,11 @@
+This directory contains images for the essay bank.
+
+For Academic Task 1 essays, you should add images of:
+- Line graphs
+- Bar charts
+- Pie charts
+- Tables
+- Process diagrams
+- Maps
+
+Name the files according to the essay titles in the database. 

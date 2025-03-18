@@ -1,0 +1,9 @@
+This is a placeholder for a generic chart/graph image.
+
+The image shows a simple placeholder with icons representing different types of charts:
+- Line graph
+- Bar chart
+- Pie chart
+- Process diagram
+
+Replace this text file with an actual PNG image. 

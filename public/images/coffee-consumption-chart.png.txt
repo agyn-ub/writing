@@ -1,0 +1,11 @@
+Bar Chart: Global Coffee Consumption (2018)
+
+The chart shows annual coffee consumption in kilograms per person across five countries:
+
+Finland: 12.5 kg
+Norway: 9.9 kg
+Iceland: 9.0 kg
+Denmark: 8.7 kg
+Netherlands: 8.4 kg
+
+Finland has the highest consumption at 12.5 kg per person, which is significantly higher than the other countries. The Nordic countries dominate the top positions, with the Netherlands being the only non-Nordic country in the top five. 
