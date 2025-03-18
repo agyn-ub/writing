@@ -80,6 +80,31 @@ export async function POST(request: NextRequest) {
       const user = userCheck.rows[0];
       console.log(`User verified in database: ID=${user.id}, Name=${user.name}, Email=${user.email}`);
       
+      // Check if the user has already submitted an essay of this type today
+      const startOfDay = new Date();
+      startOfDay.setHours(0, 0, 0, 0);
+      
+      const endOfDay = new Date();
+      endOfDay.setHours(23, 59, 59, 999);
+      
+      const existingEssayCheck = await client.query(`
+        SELECT id FROM essays 
+        WHERE user_id = $1 
+        AND type = $2 
+        AND submitted_at >= $3 
+        AND submitted_at <= $4
+      `, [verifiedUser.id, type, startOfDay, endOfDay]);
+      
+      if (existingEssayCheck.rows.length > 0) {
+        return NextResponse.json(
+          { 
+            error: 'Daily limit reached',
+            message: `You can only submit one ${type.replace('_', ' ')} essay per day. Please try again tomorrow.`
+          },
+          { status: 429 }
+        );
+      }
+      
       // Insert the essay
       console.log(`Inserting essay with ID: ${essayId}`);
       const result = await client.query(`

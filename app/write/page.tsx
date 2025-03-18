@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
+import EssayLimitInfo from '@/components/essays/essay-limit-info';
 
 const WORD_LIMITS = {
   ACADEMIC_TASK1: { min: 150, max: 200 },
@@ -126,7 +127,7 @@ export default function WritePage() {
         }, 2000);
       } else {
         const data = await response.json();
-        setSubmitError(data.error || 'Failed to submit essay');
+        setSubmitError(data.message || data.error || 'Failed to submit essay');
       }
     } catch (error) {
       console.error('Error submitting essay:', error);
@@ -166,11 +167,15 @@ export default function WritePage() {
       ) : (
         <>
           <div className="mb-6">
-            <h1 className="text-2xl font-bold mb-2">
-              {essayPrompt?.title || 
-               (type === 'ACADEMIC_TASK1' ? 'Academic Task 1' : 
-                type === 'GENERAL_TASK1' ? 'General Task 1' : 'Task 2')}
-            </h1>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+              <h1 className="text-2xl font-bold">
+                {essayPrompt?.title || 
+                 (type === 'ACADEMIC_TASK1' ? 'Academic Task 1' : 
+                  type === 'GENERAL_TASK1' ? 'General Task 1' : 'Task 2')}
+              </h1>
+              
+              <EssayLimitInfo selectedType={essayPrompt?.type || type} />
+            </div>
             
             {loading ? (
               <div className="animate-pulse h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
@@ -248,12 +253,11 @@ export default function WritePage() {
             onChange={(e) => setEssay(e.target.value)}
             className="w-full h-96 p-4 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="Start writing your essay here..."
-            disabled={submitting}
           />
 
           {submitError && (
-            <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700">
-              {submitError}
+            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-700">{submitError}</p>
             </div>
           )}
 
@@ -268,13 +272,13 @@ export default function WritePage() {
             <button
               onClick={handleSubmit}
               disabled={!isWithinLimit || submitting}
-              className={`px-4 py-2 rounded-md ${
+              className={`px-6 py-2 rounded-md ${
                 isWithinLimit && !submitting
-                  ? 'bg-blue-600 text-white hover:bg-blue-700'
+                  ? 'bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
                   : 'bg-gray-400 text-gray-200 cursor-not-allowed'
               }`}
             >
-              {submitting ? 'Submitting...' : 'Submit'}
+              {submitting ? 'Submitting...' : 'Submit Essay'}
             </button>
           </div>
         </>

@@ -42,8 +42,8 @@ export default function EssayForm({ type }: EssayFormProps) {
       });
 
       if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Failed to submit essay');
+        const errorData = await response.json();
+        throw new Error(errorData.message || errorData.error || 'Failed to submit essay');
       }
 
       router.push('/dashboard');
