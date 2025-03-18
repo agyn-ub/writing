@@ -1,0 +1,91 @@
+{
+  "navigation": {
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "essays": "My Essays"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
+  },
+  "essays": {
+    "academic": "Academic Task 1",
+    "general": "General Task 1",
+    "task2": "Task 2",
+    "noEssays": "No essays found",
+    "writeNew": "Write New Essay"
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "recentEssays": "Recent Essays",
+    "viewAll": "View All",
+    "title": "Dashboard",
+    "practicePrompt": "Practice your IELTS writing skills by selecting one of the essay types below",
+    "practiceEssays": "Practice Essays",
+    "table": {
+      "type": "Type",
+      "title": "Title",
+      "submitted": "Submitted",
+      "actions": "Actions",
+      "view": "View",
+      "tryAgain": "Try Again",
+      "untitledEssay": "Untitled Essay",
+      "noEssays": "You haven't submitted any essays yet"
+    },
+    "cards": {
+      "academic": {
+        "title": "Academic Task 1",
+        "subtitle": "Describe charts, graphs, or diagrams",
+        "noEssays": "No Academic Task 1 essays available",
+        "browse": "Browse Essays",
+        "start": "Start Writing"
+      },
+      "general": {
+        "title": "General Task 1",
+        "subtitle": "Write a letter for a specific purpose",
+        "noEssays": "No General Task 1 essays available",
+        "browse": "Browse Essays",
+        "start": "Start Writing"
+      },
+      "task2": {
+        "title": "Task 2",
+        "subtitle": "Write an essay on a given topic",
+        "noEssays": "No Task 2 essays available",
+        "browse": "Browse Essays",
+        "start": "Start Writing"
+      }
+    }
+  },
+  "home": {
+    "title": "IELTS Essay Checker",
+    "subtitle": "Your AI-powered companion for IELTS writing success",
+    "learnMore": "Learn More",
+    "features": {
+      "label": "Features",
+      "title": "Everything you need to succeed",
+      "subtitle": "Comprehensive tools and features to help you excel in your IELTS writing tasks",
+      "academic": {
+        "title": "Academic Task 1",
+        "description": "Master data interpretation and analysis for Academic Task 1 essays"
+      },
+      "general": {
+        "title": "General Task 1",
+        "description": "Perfect your letter writing skills for General Task 1"
+      },
+      "task2": {
+        "title": "Task 2",
+        "description": "Develop compelling arguments for Task 2 essays"
+      }
+    },
+    "cta": {
+      "title": "Ready to improve your IELTS score?",
+      "subtitle": "Join thousands of students who have achieved their target scores with our platform."
+    },
+    "footer": {
+      "copyright": "© 2023 IELTS Essay Checker. All rights reserved.",
+      "terms": "Terms & Conditions",
+      "privacy": "Privacy",
+      "contact": "Contact"
+    }
+  }
+} 
