@@ -2,7 +2,8 @@
   "navigation": {
     "dashboard": "Dashboard",
     "home": "Home",
-    "essays": "My Essays"
+    "essays": "My Essays",
+    "audit": "Site Audit"
   },
   "auth": {
     "signIn": "Sign In",
@@ -15,9 +16,11 @@
     "generalPractice": "General Task 1 Writing Practice",
     "task2Practice": "Task 2 Essay Writing Practice",
     "wordCount": "Word Count Tracking",
-    "signInWithGoogle": "Sign in with Google"
+    "signInWithGoogle": "Sign in with Google",
+    "signInWithApple": "Sign in with Apple"
   },
   "essays": {
+    "type": "Essay Type",
     "academic": "Academic Task 1",
     "general": "General Task 1",
     "task2": "Task 2",
@@ -92,74 +95,110 @@
       "general": "One General Task 1 essay",
       "task2": "One Task 2 essay",
       "resetInfo": "Limits reset at midnight in your local time zone."
-    }
+    },
+    "myEssays": "My Essays",
+    "recentSubmissions": "Recent Submissions",
+    "taskType": "Task Type",
+    "submittedOn": "Submitted On",
+    "score": "Score",
+    "actions": "Actions",
+    "tryAgain": "Try Again",
+    "dailyLimit": "Daily Submission Limit",
+    "dailyLimitInfo": "You can submit one essay of each type per day."
   },
   "home": {
-    "title": "IELTS Essay Checker",
-    "subtitle": "Your AI-powered companion for IELTS writing success",
+    "title": "Improve Your IELTS Writing Skills",
+    "subtitle": "Get instant feedback on your IELTS essays using AI-powered analysis",
     "learnMore": "Learn More",
     "features": {
-      "label": "Features",
-      "title": "Everything you need to succeed",
-      "subtitle": "Comprehensive tools and features to help you excel in your IELTS writing tasks",
+      "label": "Essay Types",
+      "title": "Practice All IELTS Writing Tasks",
+      "subtitle": "Our platform provides tailored practice for each IELTS writing task with personalized feedback",
       "academic": {
-        "title": "Academic Task 1",
-        "description": "Master data interpretation and analysis for Academic Task 1 essays"
+        "description": "Practice describing charts, graphs, tables, and diagrams with detailed AI feedback"
       },
       "general": {
-        "title": "General Task 1",
-        "description": "Perfect your letter writing skills for General Task 1"
+        "description": "Improve your letter writing skills for the General Training module"
       },
       "task2": {
-        "title": "Task 2",
-        "description": "Develop compelling arguments for Task 2 essays"
+        "description": "Develop your argumentative essay skills with comprehensive analysis and scoring"
       }
     },
     "cta": {
-      "title": "Ready to improve your IELTS score?",
-      "subtitle": "Join thousands of students who have achieved their target scores with our platform."
+      "title": "Start Improving Your IELTS Score Today",
+      "subtitle": "Join thousands of students who have enhanced their writing skills with our platform"
     },
     "footer": {
       "copyright": "© 2023 IELTS Essay Checker. All rights reserved.",
-      "terms": "Terms & Conditions",
-      "privacy": "Privacy",
-      "contact": "Contact"
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "contact": "Contact Us"
     }
   },
   "write": {
-    "title": "Write an Essay",
-    "backToDashboard": "Back to Dashboard",
-    "chartDescription": "Chart Description:",
-    "chartNotAvailable": "The chart or graph for this task is not available. Please imagine a suitable chart based on the prompt.",
-    "letterGuidelinesTitle": "Letter Writing Guidelines:",
-    "letterGuidelines": {
-      "salutation": "Include appropriate salutation and closing",
-      "paragraphs": "Organize your letter into clear paragraphs",
-      "language": "Use language appropriate to the context (formal/informal)",
-      "address": "Address all points mentioned in the prompt"
-    },
-    "essayGuidelinesTitle": "Essay Writing Guidelines:",
-    "essayGuidelines": {
-      "structure": "Include an introduction, body paragraphs, and conclusion",
-      "position": "Present a clear position or argument",
-      "support": "Support your ideas with examples and explanations",
-      "vocabulary": "Use a range of vocabulary and grammatical structures"
-    },
-    "wordLimit": "Word limit:",
-    "words": "words",
-    "required": "required:",
-    "placeholder": "Start writing your essay here...",
-    "clear": "Clear",
+    "title": "Write Your Essay",
+    "wordCount": "Word Count",
     "submit": "Submit Essay",
     "submitting": "Submitting...",
-    "successMessage": "Essay Submitted Successfully!",
-    "successDescription": "Your essay has been submitted for review.",
-    "returnToDashboard": "Return to Dashboard"
+    "wordCountWarning": "Your essay should be at least {min} words but not more than {max} words.",
+    "successMessage": "Your essay has been submitted successfully!",
+    "errorMessage": "There was an error submitting your essay. Please try again.",
+    "viewFeedback": "View Feedback",
+    "backToDashboard": "Back to Dashboard",
+    "dailyLimit": {
+      "title": "Daily Submission Limit",
+      "message": "You can submit one essay of each type per day.",
+      "remaining": "You have already submitted this type of essay today. Please try again tomorrow."
+    }
   },
   "essayLimits": {
     "dailyLimitReached": "Daily limit reached",
     "alreadySubmitted": "You've already submitted a {type} essay today.",
     "availableForSubmission": "Available for submission",
     "canSubmitOne": "You can submit one {type} essay today"
+  },
+  "my-essays": {
+    "title": "My Essays",
+    "noEssays": "You haven't submitted any essays yet.",
+    "essayType": "Essay Type",
+    "submittedOn": "Submitted On",
+    "score": "Score",
+    "actions": "Actions",
+    "view": "View",
+    "tryAgain": "Try Again"
+  },
+  "feedback": {
+    "title": "Essay Feedback",
+    "overallFeedback": "Overall Feedback",
+    "taskAchievement": "Task Achievement",
+    "coherenceAndCohesion": "Coherence and Cohesion",
+    "lexicalResource": "Lexical Resource",
+    "grammaticalRangeAndAccuracy": "Grammatical Range and Accuracy",
+    "overallScore": "Overall Score",
+    "suggestions": "Suggestions for Improvement",
+    "highlightedEssay": "Your Essay with Highlights",
+    "backToDashboard": "Back to Dashboard"
+  },
+  "audit": {
+    "title": "Site Audit & Analytics",
+    "seoScore": "SEO Score",
+    "performanceScore": "Performance Score",
+    "accessibilityScore": "Accessibility Score",
+    "seoChecklist": "SEO Checklist",
+    "accessibilityChecklist": "Accessibility Checklist",
+    "performanceAudit": "Performance Audit",
+    "startAudit": "Start Audit",
+    "analyzing": "Analyzing page performance...",
+    "metrics": "Metrics",
+    "suggestions": "Optimization Suggestions",
+    "rerunAudit": "Re-run Audit",
+    "clearResults": "Clear Results",
+    "nextSteps": "Next Steps",
+    "returnToDashboard": "Return to Dashboard",
+    "status": {
+      "good": "Good",
+      "needsImprovement": "Needs Improvement",
+      "poor": "Poor"
+    }
   }
 } 
