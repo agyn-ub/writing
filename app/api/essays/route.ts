@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { pool } from '@/db/pool';
 import { handleUserSession } from '../auth/session-handler';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/app/api/auth/auth-options';
 
 export async function POST(request: NextRequest) {
   try {
@@ -60,29 +60,40 @@ export async function POST(request: NextRequest) {
         );
       }
       
-      // Insert the essay into the database
-      const result = await client.query(`
-        INSERT INTO essays (user_id, content, type, essay_bank_id, submitted_at) 
-        VALUES ($1, $2, $3, $4, NOW()) 
-        RETURNING id, submitted_at
-      `, [verifiedUser.id, content, type, essayBankId || null]);
-      
-      if (result.rows.length === 0) {
-        return NextResponse.json({ error: 'Failed to save essay' }, { status: 500 });
+      // Insert the essay into the database with UUID generated ID
+      try {
+        const result = await client.query(`
+          INSERT INTO essays (id, user_id, content, type, essay_bank_id, submitted_at) 
+          VALUES (gen_random_uuid(), $1, $2, $3, $4, NOW()) 
+          RETURNING id, submitted_at
+        `, [verifiedUser.id, content, type, essayBankId || null]);
+        
+        if (result.rows.length === 0) {
+          return NextResponse.json({ error: 'Failed to save essay' }, { status: 500 });
+        }
+        
+        const savedEssay = result.rows[0];
+        
+        return NextResponse.json({
+          id: savedEssay.id,
+          message: 'Essay submitted successfully',
+          submittedAt: savedEssay.submitted_at
+        });
+      } catch (insertError: unknown) {
+        console.error('Database insert error:', insertError);
+        return NextResponse.json({ 
+          error: 'Failed to save essay', 
+          details: insertError instanceof Error ? insertError.message : String(insertError) 
+        }, { status: 500 });
       }
-      
-      const savedEssay = result.rows[0];
-      
-      return NextResponse.json({
-        id: savedEssay.id,
-        message: 'Essay submitted successfully',
-        submittedAt: savedEssay.submitted_at
-      });
     } finally {
       client.release();
     }
   } catch (error) {
     console.error('Error submitting essay:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ 
+      error: 'Internal server error',
+      details: error instanceof Error ? error.message : String(error) 
+    }, { status: 500 });
   }
 } 

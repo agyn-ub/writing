@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { CustomSession } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions, CustomSession } from '@/app/api/auth/auth-options';
 import { pool } from '@/db/pool';
 
 export async function GET(request: NextRequest) {

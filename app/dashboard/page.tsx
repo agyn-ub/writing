@@ -303,7 +303,7 @@ export default function DashboardPage() {
                   <h4 className="font-semibold mb-2">{featuredEssays.academic.title}</h4>
                   <p className="text-gray-600 text-sm mb-4 line-clamp-2">{featuredEssays.academic.prompt}</p>
                   <Link
-                    href={`/write?essayBankId=${featuredEssays.academic.id}`}
+                    href={`/write?id=${featuredEssays.academic.id}`}
                     className="inline-block w-full text-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
                   >
                     {t('dashboard.cards.academic.start')}
@@ -334,7 +334,7 @@ export default function DashboardPage() {
                 <h4 className="font-semibold mb-2">{featuredEssays.general.title}</h4>
                 <p className="text-gray-600 text-sm mb-4 line-clamp-4">{featuredEssays.general.prompt}</p>
                 <Link
-                  href={`/write?essayBankId=${featuredEssays.general.id}`}
+                  href={`/write?id=${featuredEssays.general.id}`}
                   className="inline-block w-full text-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
                 >
                   {t('dashboard.cards.general.start')}
@@ -364,7 +364,7 @@ export default function DashboardPage() {
                 <h4 className="font-semibold mb-2">{featuredEssays.task2.title}</h4>
                 <p className="text-gray-600 text-sm mb-4 line-clamp-4">{featuredEssays.task2.prompt}</p>
                 <Link
-                  href={`/write?essayBankId=${featuredEssays.task2.id}`}
+                  href={`/write?id=${featuredEssays.task2.id}`}
                   className="inline-block w-full text-center px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"
                 >
                   {t('dashboard.cards.task2.start')}

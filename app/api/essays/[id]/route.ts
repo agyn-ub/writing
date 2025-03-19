@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { CustomSession } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions, CustomSession } from '@/app/api/auth/auth-options';
 import { pool } from '@/db/pool';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id: essayId } = await params;
     const session = await getServerSession(authOptions) as CustomSession | null;
 
     if (!session || !session.user) {
@@ -17,8 +17,6 @@ export async function GET(
         { status: 401 }
       );
     }
-
-    const essayId = params.id;
     
     // Fetch the essay data from the database
     const client = await pool.connect();

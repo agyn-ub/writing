@@ -102,7 +102,7 @@ export default function AcademicTask1Page() {
                 <h2 className="text-xl font-semibold mb-2">{essay.title}</h2>
                 <p className="text-gray-600 mb-4 line-clamp-3">{essay.prompt}</p>
                 <button
-                  onClick={() => router.push(`/write?essayBankId=${essay.id}`)}
+                  onClick={() => router.push(`/write?id=${essay.id}`)}
                   className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
                 >
                   Start Writing

@@ -138,13 +138,34 @@
   "write": {
     "title": "Write Your Essay",
     "wordCount": "Word Count",
+    "wordLimit": "Word Limit",
+    "words": "words",
+    "required": "required",
     "submit": "Submit Essay",
     "submitting": "Submitting...",
+    "clear": "Clear",
+    "placeholder": "Start typing your essay here...",
     "wordCountWarning": "Your essay should be at least {min} words but not more than {max} words.",
     "successMessage": "Your essay has been submitted successfully!",
     "errorMessage": "There was an error submitting your essay. Please try again.",
     "viewFeedback": "View Feedback",
     "backToDashboard": "Back to Dashboard",
+    "chartDescription": "Chart Description:",
+    "chartNotAvailable": "Chart image not available. Please refer to the prompt for details.",
+    "letterGuidelinesTitle": "Letter Writing Guidelines:",
+    "letterGuidelines": {
+      "salutation": "Include an appropriate salutation (Dear Sir/Madam or Dear [Name])",
+      "paragraphs": "Structure your letter with clear paragraphs",
+      "language": "Use formal or informal language as appropriate",
+      "address": "End with an appropriate closing (Yours faithfully/sincerely)"
+    },
+    "essayGuidelinesTitle": "Essay Writing Guidelines:",
+    "essayGuidelines": {
+      "structure": "Include an introduction, body paragraphs, and conclusion",
+      "position": "Clearly state your position on the topic",
+      "support": "Support your arguments with examples and evidence",
+      "vocabulary": "Use a range of vocabulary and sentence structures"
+    },
     "dailyLimit": {
       "title": "Daily Submission Limit",
       "message": "You can submit one essay of each type per day.",
