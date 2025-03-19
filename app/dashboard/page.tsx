@@ -206,18 +206,10 @@ export default function DashboardPage() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <Link 
                           href={`/essays/${essay.id}`} 
-                          className="text-blue-600 hover:text-blue-900 mr-4"
+                          className="text-blue-600 hover:text-blue-900"
                         >
                           {t('dashboard.table.view')}
                         </Link>
-                        {essay.essay_bank_id && (
-                          <Link 
-                            href={`/write?essayBankId=${essay.essay_bank_id}`} 
-                            className="text-green-600 hover:text-green-900"
-                          >
-                            {t('dashboard.table.tryAgain')}
-                          </Link>
-                        )}
                       </td>
                     </tr>
                   ))}
@@ -240,7 +232,31 @@ export default function DashboardPage() {
 
       {/* Practice Essays Section */}
       <div className="mb-6 sm:mb-8">
-        <h2 className="text-xl sm:text-2xl font-semibold mb-4">{t('dashboard.practiceEssays')}</h2>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <h2 className="text-xl sm:text-2xl font-semibold">{t('dashboard.practiceEssays')}</h2>
+        </div>
+        
+        <div className="mt-4 mb-6 p-4 bg-blue-50 border border-blue-100 rounded-lg">
+          <div className="flex items-start">
+            <div className="flex-shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div className="ml-3">
+              <h3 className="text-md font-medium text-blue-800">Daily Submission Limits</h3>
+              <div className="mt-1 text-sm text-blue-700">
+                <p>You can submit one essay of each type per day:</p>
+                <ul className="mt-1 list-disc list-inside ml-2">
+                  <li>One Academic Task 1 essay</li>
+                  <li>One General Task 1 essay</li>
+                  <li>One Task 2 essay</li>
+                </ul>
+                <p className="mt-1 text-xs text-blue-600">Limits reset at midnight in your local time zone.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {loading ? (

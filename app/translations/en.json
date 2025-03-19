@@ -6,14 +6,44 @@
   },
   "auth": {
     "signIn": "Sign In",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "welcomeTitle": "Welcome to IELTS Essay Checker",
+    "signInAccount": "Sign in to your account",
+    "practiceMessage": "Practice IELTS writing tasks and get instant feedback",
+    "features": "Features:",
+    "academicPractice": "Academic Task 1 Writing Practice",
+    "generalPractice": "General Task 1 Writing Practice",
+    "task2Practice": "Task 2 Essay Writing Practice",
+    "wordCount": "Word Count Tracking",
+    "signInWithGoogle": "Sign in with Google"
   },
   "essays": {
     "academic": "Academic Task 1",
     "general": "General Task 1",
     "task2": "Task 2",
     "noEssays": "No essays found",
-    "writeNew": "Write New Essay"
+    "writeNew": "Write New Essay",
+    "myEssaysTitle": "My Essays",
+    "allEssays": "All Essays",
+    "backToDashboard": "Back to Dashboard",
+    "goToDashboard": "Go to Dashboard",
+    "table": {
+      "type": "Type",
+      "title": "Title",
+      "submitted": "Submitted",
+      "actions": "Actions",
+      "view": "View",
+      "showingTo": "Showing {start} to {end} of {total} essays",
+      "previous": "Previous",
+      "next": "Next",
+      "noEssaysSubmitted": "You haven't submitted any essays yet."
+    },
+    "details": {
+      "untitledEssay": "Untitled Essay",
+      "submittedOn": "Submitted on {date}",
+      "essayPrompt": "Essay Prompt:",
+      "yourResponse": "Your Response:"
+    }
   },
   "dashboard": {
     "welcome": "Welcome back",
@@ -54,6 +84,14 @@
         "browse": "Browse Essays",
         "start": "Start Writing"
       }
+    },
+    "dailyLimits": {
+      "title": "Daily Submission Limits",
+      "description": "You can submit one essay of each type per day:",
+      "academic": "One Academic Task 1 essay",
+      "general": "One General Task 1 essay",
+      "task2": "One Task 2 essay",
+      "resetInfo": "Limits reset at midnight in your local time zone."
     }
   },
   "home": {
@@ -87,5 +125,41 @@
       "privacy": "Privacy",
       "contact": "Contact"
     }
+  },
+  "write": {
+    "title": "Write an Essay",
+    "backToDashboard": "Back to Dashboard",
+    "chartDescription": "Chart Description:",
+    "chartNotAvailable": "The chart or graph for this task is not available. Please imagine a suitable chart based on the prompt.",
+    "letterGuidelinesTitle": "Letter Writing Guidelines:",
+    "letterGuidelines": {
+      "salutation": "Include appropriate salutation and closing",
+      "paragraphs": "Organize your letter into clear paragraphs",
+      "language": "Use language appropriate to the context (formal/informal)",
+      "address": "Address all points mentioned in the prompt"
+    },
+    "essayGuidelinesTitle": "Essay Writing Guidelines:",
+    "essayGuidelines": {
+      "structure": "Include an introduction, body paragraphs, and conclusion",
+      "position": "Present a clear position or argument",
+      "support": "Support your ideas with examples and explanations",
+      "vocabulary": "Use a range of vocabulary and grammatical structures"
+    },
+    "wordLimit": "Word limit:",
+    "words": "words",
+    "required": "required:",
+    "placeholder": "Start writing your essay here...",
+    "clear": "Clear",
+    "submit": "Submit Essay",
+    "submitting": "Submitting...",
+    "successMessage": "Essay Submitted Successfully!",
+    "successDescription": "Your essay has been submitted for review.",
+    "returnToDashboard": "Return to Dashboard"
+  },
+  "essayLimits": {
+    "dailyLimitReached": "Daily limit reached",
+    "alreadySubmitted": "You've already submitted a {type} essay today.",
+    "availableForSubmission": "Available for submission",
+    "canSubmitOne": "You can submit one {type} essay today"
   }
 } 

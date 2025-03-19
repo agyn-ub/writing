@@ -7,11 +7,16 @@ import hiTranslations from '@/app/translations/hi.json';
 export type Locale = 'en' | 'hi';
 type Translations = typeof enTranslations;
 
+// Define the parameter type for substitutions
+interface TranslationParams {
+  [key: string]: string | number;
+}
+
 interface LanguageContextType {
   locale: Locale;
   translations: Translations;
   setLocale: (locale: Locale) => void;
-  t: (key: string) => string;
+  t: (key: string, params?: TranslationParams) => string;
 }
 
 const translations = {
@@ -34,13 +39,22 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }, obj);
   };
 
-  // Translation function
-  const t = useCallback((key: string): string => {
-    const translation = getNestedValue(translations[locale], key);
+  // Translation function with parameter support
+  const t = useCallback((key: string, params?: TranslationParams): string => {
+    let translation = getNestedValue(translations[locale], key);
+    
     if (!translation) {
       console.warn(`Translation missing for key: ${key}`);
       return key;
     }
+    
+    // Replace parameters in the translation string if provided
+    if (params) {
+      Object.entries(params).forEach(([paramKey, paramValue]) => {
+        translation = translation.replace(new RegExp(`{${paramKey}}`, 'g'), String(paramValue));
+      });
+    }
+    
     return translation;
   }, [locale]);
 

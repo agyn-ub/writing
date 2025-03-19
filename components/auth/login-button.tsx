@@ -1,8 +1,11 @@
 'use client';
 
 import { signIn } from 'next-auth/react';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 export default function LoginButton() {
+  const { t } = useLanguage();
+
   return (
     <button
       onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
@@ -31,7 +34,7 @@ export default function LoginButton() {
           fill="#EA4335"
         />
       </svg>
-      Sign in with Google
+      {t('auth.signInWithGoogle')}
     </button>
   );
 } 

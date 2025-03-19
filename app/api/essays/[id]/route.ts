@@ -6,13 +6,9 @@ import { pool } from '@/db/pool';
 
 export async function GET(
   request: NextRequest,
-  context: { params: Promise<{ id: string }> | { id: string } }
+  { params }: { params: { id: string } }
 ) {
   try {
-    // Await params if it's a Promise
-    const resolvedParams = await Promise.resolve(context.params);
-    const essayId = resolvedParams.id;
-    
     const session = await getServerSession(authOptions) as CustomSession | null;
 
     if (!session || !session.user) {
@@ -22,17 +18,12 @@ export async function GET(
       );
     }
 
-    if (!essayId) {
-      return NextResponse.json(
-        { error: 'Essay ID is required' },
-        { status: 400 }
-      );
-    }
-
-    // Connect to the database
+    const essayId = params.id;
+    
+    // Fetch the essay data from the database
     const client = await pool.connect();
+    
     try {
-      // First, check if the essay exists and belongs to the user
       const query = `
         SELECT 
           e.id, 
@@ -64,15 +55,13 @@ export async function GET(
       
       // Check if the essay belongs to the current user
       if (essay.user_id !== session.user.id) {
+        // If not authorized, return 403
         return NextResponse.json(
           { error: 'You do not have permission to view this essay' },
           { status: 403 }
         );
       }
-      
-      // Remove user_id from the response for security
-      delete essay.user_id;
-      
+
       return NextResponse.json(essay);
     } finally {
       client.release();

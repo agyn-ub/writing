@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { redirect, useSearchParams } from 'next/navigation';
 import { format } from 'date-fns';
+import { useLanguage } from '@/app/contexts/LanguageContext';
 
 interface UserEssay {
   id: string;
@@ -28,6 +29,7 @@ interface UserEssaysResponse {
 
 export default function MyEssaysPage() {
   const { data: session, status } = useSession();
+  const { t } = useLanguage();
   const searchParams = useSearchParams();
   const [essays, setEssays] = useState<UserEssay[]>([]);
   const [loading, setLoading] = useState(true);
@@ -94,11 +96,11 @@ export default function MyEssaysPage() {
   const getEssayTypeDisplay = (type: string) => {
     switch (type) {
       case 'ACADEMIC_TASK1':
-        return 'Academic Task 1';
+        return t('essays.academic');
       case 'GENERAL_TASK1':
-        return 'General Task 1';
+        return t('essays.general');
       case 'TASK2':
-        return 'Task 2';
+        return t('essays.task2');
       default:
         return type;
     }
@@ -129,7 +131,7 @@ export default function MyEssaysPage() {
   return (
     <div className="max-w-7xl mx-auto p-4 sm:p-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
-        <h1 className="text-2xl sm:text-3xl font-bold">My Essays</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold">{t('essays.myEssaysTitle')}</h1>
         <Link 
           href="/dashboard" 
           className="text-blue-600 hover:text-blue-800 flex items-center"
@@ -137,7 +139,7 @@ export default function MyEssaysPage() {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          Back to Dashboard
+          {t('essays.backToDashboard')}
         </Link>
       </div>
 
@@ -148,25 +150,25 @@ export default function MyEssaysPage() {
             href="/my-essays"
             className={`px-3 py-2 rounded-md text-sm font-medium ${!activeFilter ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}
           >
-            All Essays
+            {t('essays.allEssays')}
           </Link>
           <Link 
             href="/my-essays?type=ACADEMIC_TASK1"
             className={`px-3 py-2 rounded-md text-sm font-medium ${activeFilter === 'ACADEMIC_TASK1' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-800 hover:bg-blue-200'}`}
           >
-            Academic Task 1
+            {t('essays.academic')}
           </Link>
           <Link 
             href="/my-essays?type=GENERAL_TASK1"
             className={`px-3 py-2 rounded-md text-sm font-medium ${activeFilter === 'GENERAL_TASK1' ? 'bg-green-600 text-white' : 'bg-green-100 text-green-800 hover:bg-green-200'}`}
           >
-            General Task 1
+            {t('essays.general')}
           </Link>
           <Link 
             href="/my-essays?type=TASK2"
             className={`px-3 py-2 rounded-md text-sm font-medium ${activeFilter === 'TASK2' ? 'bg-purple-600 text-white' : 'bg-purple-100 text-purple-800 hover:bg-purple-200'}`}
           >
-            Task 2
+            {t('essays.task2')}
           </Link>
         </div>
       </div>
@@ -183,16 +185,16 @@ export default function MyEssaysPage() {
                 <thead className="bg-gray-50">
                   <tr>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Type
+                      {t('essays.table.type')}
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Title
+                      {t('essays.table.title')}
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Submitted
+                      {t('essays.table.submitted')}
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Actions
+                      {t('essays.table.actions')}
                     </th>
                   </tr>
                 </thead>
@@ -206,7 +208,7 @@ export default function MyEssaysPage() {
                       </td>
                       <td className="px-6 py-4">
                         <div className="text-sm font-medium text-gray-900">
-                          {essay.essay_title || 'Untitled Essay'}
+                          {essay.essay_title || t('dashboard.table.untitledEssay')}
                         </div>
                         <div className="text-sm text-gray-500 line-clamp-1">
                           {essay.content.substring(0, 50)}...
@@ -218,18 +220,10 @@ export default function MyEssaysPage() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <Link 
                           href={`/essays/${essay.id}`} 
-                          className="text-blue-600 hover:text-blue-900 mr-4"
+                          className="text-blue-600 hover:text-blue-900"
                         >
-                          View
+                          {t('dashboard.table.view')}
                         </Link>
-                        {essay.essay_bank_id && (
-                          <Link 
-                            href={`/write?essayBankId=${essay.essay_bank_id}`} 
-                            className="text-green-600 hover:text-green-900"
-                          >
-                            Try Again
-                          </Link>
-                        )}
                       </td>
                     </tr>
                   ))}
@@ -241,11 +235,11 @@ export default function MyEssaysPage() {
             {totalPages > 1 && (
               <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 flex items-center justify-between">
                 <div className="text-sm text-gray-700">
-                  Showing <span className="font-medium">{pagination.offset + 1}</span> to{' '}
-                  <span className="font-medium">
-                    {Math.min(pagination.offset + pagination.limit, pagination.total)}
-                  </span>{' '}
-                  of <span className="font-medium">{pagination.total}</span> essays
+                  {t('essays.table.showingTo', {
+                    start: pagination.offset + 1,
+                    end: Math.min(pagination.offset + pagination.limit, pagination.total),
+                    total: pagination.total
+                  })}
                 </div>
                 <div className="flex space-x-2">
                   {currentPage > 1 && (
@@ -253,7 +247,7 @@ export default function MyEssaysPage() {
                       href={`/my-essays?offset=${(currentPage - 2) * pagination.limit}&limit=${pagination.limit}${activeFilter ? `&type=${activeFilter}` : ''}`}
                       className="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                     >
-                      Previous
+                      {t('essays.table.previous')}
                     </Link>
                   )}
                   {pagination.hasMore && (
@@ -261,7 +255,7 @@ export default function MyEssaysPage() {
                       href={`/my-essays?offset=${currentPage * pagination.limit}&limit=${pagination.limit}${activeFilter ? `&type=${activeFilter}` : ''}`}
                       className="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                     >
-                      Next
+                      {t('essays.table.next')}
                     </Link>
                   )}
                 </div>
@@ -270,12 +264,12 @@ export default function MyEssaysPage() {
           </>
         ) : (
           <div className="p-8 text-center">
-            <p className="text-gray-500 mb-4">You haven't submitted any essays yet.</p>
+            <p className="text-gray-500 mb-4">{t('essays.table.noEssaysSubmitted')}</p>
             <Link
               href="/dashboard"
               className="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
             >
-              Go to Dashboard
+              {t('essays.goToDashboard')}
             </Link>
           </div>
         )}
